@@ -11,6 +11,12 @@ if (preg_match_all('/\s+(https?:\/\/[^\s]+)/i', $body, $matches)) {
             $embedded .= "<span class=\"OpenGraphImage\"style=\"float:left\">" .
                             "<img width=\"100px\"src=\"{$graph->image}\"/></span>";
         }
+        else {
+            $linkimg = Idno\Core\site()->config()->getDisplayURL() . 
+                            "IdnoPlugins/OpenGraphConsumer/images/hyperlink.png";
+            $embedded .= "<span class=\"OpenGraphImage\"style=\"float:left\">" .
+                            "<img width=\"100px\"src=\"{$linkimg}\"/></span>";
+        }
         $embedded .= "<span class=\"OpenGraphContent\" style=\"float:left\">";
         if($graph->title) {
             $embedded .= "<strong>{$graph->title}</strong>";
