@@ -6,7 +6,7 @@ if (preg_match_all('/\s+(https?:\/\/[^\s]+)/i', $body, $matches)) {
     foreach ($matches[1] as $m) {
         // Parse with opengraph
         $graph = OpenGraph::fetch($m);
-        $embedded .= "<a href=\"{$graph->url}\"><div>";
+        $embedded .= "<a href=\"{$m}\"><div>";
         if($graph->image) {
             $embedded .= "<span class=\"OpenGraphImage\"style=\"float:left\">" .
                             "<img width=\"100px\"src=\"{$graph->image}\"/></span>";
