@@ -17,7 +17,7 @@ if (preg_match_all('/\s+(https?:\/\/[^\s]+)/i', $body, $matches)) {
             $embedded .= "<span class=\"OpenGraphImage\"style=\"float:left\">" .
                             "<img width=\"100px\"src=\"{$linkimg}\"/></span>";
         }
-        $embedded .= "<span class=\"OpenGraphContent\" style=\"float:left\">";
+        $embedded .= "<span class=\"OpenGraphContent\" style=\"padding-left: 10px;float:left\">";
         if($graph->title) {
             $embedded .= "<strong>{$graph->title}</strong>";
         }
