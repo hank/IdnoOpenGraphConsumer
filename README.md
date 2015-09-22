@@ -15,7 +15,7 @@ Installation
 * Install into your IdnoPlugins directory and activate it in the plugins setting panel.
 * You wanted more?
 
-Licence
+License
 -------
 
 Released under the Apache 2.0 license: http://www.apache.org/licenses/LICENSE-2.0.html
