@@ -1,10 +1,41 @@
-span.OpenGraphContent {
-    color: #222;
+div.OpenGraphContainer {
+    height: 160px;
+    width: 100%;
+    border-radius: 3px;
+    -moz-border-radius: 20px;
+    background-color: #e4e4f4;
+    border: 1px solid #999;
+    margin-bottom: 15px;
+}
+div.OpenGraphContainer * {
+    background-color: rgba(255, 0, 0, 0.0);
 }
 
-span.OpenGraphContent a {
+div.OpenGraphContainer a:hover {
     text-decoration: none;
 }
 
-span.OpenGraphImage {
+div.OpenGraphContentOuter {
+    color: #444;
+    height: 160px;
+    width: 80%;
+    vertical-align: middle;
+    display: table-cell;
+    overflow: hidden;
+}
+div.OpenGraphContent {
+    color: #444;
+    width: 100%;
+    vertical-align: middle;
+}
+
+div.OpenGraphImage {
+    display: table-cell; 
+    line-height: 160px;
+    height: 160px;
+    width: 15%;
+    text-align: center;
+}
+div.OpenGraphImage > img {
+    vertical-align: middle;
 }

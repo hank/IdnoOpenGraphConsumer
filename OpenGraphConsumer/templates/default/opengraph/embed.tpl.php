@@ -6,26 +6,35 @@ if (preg_match_all('/\s+(https?:\/\/[^\s]+)/i', $body, $matches)) {
     foreach ($matches[1] as $m) {
         // Parse with opengraph
         $graph = OpenGraph::fetch($m);
+        $embedded .= "<div class=\"OpenGraphContainer\">";
         $embedded .= "<a href=\"{$m}\" target=\"_blank\"><div>";
         if($graph->image) {
-            $embedded .= "<span class=\"OpenGraphImage\"style=\"float:left\">" .
-                            "<img width=\"100px\"src=\"{$graph->image}\"/></span>";
+            $embedded .= "<div class=\"OpenGraphImage\">" .
+                            "<img width=\"100px\"src=\"{$graph->image}\"/></div>";
         }
         else {
             $linkimg = Idno\Core\site()->config()->getDisplayURL() . 
                             "IdnoPlugins/OpenGraphConsumer/images/hyperlink.png";
-            $embedded .= "<span class=\"OpenGraphImage\"style=\"float:left\">" .
-                            "<img width=\"100px\"src=\"{$linkimg}\"/></span>";
+            $embedded .= "<div class=\"OpenGraphImage\">" .
+                            "<img width=\"100px\" src=\"{$linkimg}\"/></div>";
         }
-        $embedded .= "<span class=\"OpenGraphContent\" style=\"padding-left: 10px;float:left\">";
+        $embedded .= "<div class=\"OpenGraphContentOuter\">";
+        $embedded .= "<div class=\"OpenGraphContent\">";
         if($graph->title) {
             $embedded .= "<strong>{$graph->title}</strong>";
         }
         if($graph->description) {
-            $embedded .= "<p style=\"font-size:0.7em;\">{$graph->description}</p>";
+            // Trim it down
+            if(strlen($graph->description) > 300)
+                $desc = substr($graph->description, 0, 300) . "...";
+            else
+                $desc = $graph->description;
+            $embedded .= "<p style=\"font-size:0.7em;\">{$desc}</p>";
         }
-        $embedded .= "</span>";
-        $embedded .= "</div></a>";
+        $embedded .= "</div>";
+        $embedded .= "</div>";
+        $embedded .= "</a>";
+        $embedded .= "</div>";
     }
 }
 
